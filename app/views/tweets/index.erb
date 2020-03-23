@@ -1,0 +1,17 @@
+
+<% if logged_in? %>
+<h1>Welcome, <%=@user.username%></h1>
+<h2><button onclick="window.location.href = '/tweets/new';">New Tweet</button></h2>
+<h2><button onclick="window.location.href = 'users/<%=@user.slug%>';">See my tweets</button></h2>
+<button onclick="window.location.href = '/logout';">Log Out</button>
+<ul>
+<%@tweets.each do |tweet|%>
+
+  <li><a href="/tweets/<%=tweet.id%>"><%=tweet.content%></a> - <a href="users/<%=tweet.user.slug%>"><%=tweet.user.username%></a></li>
+
+<%end%>
+</ul>
+
+<%else%>
+<h1>Welcome!</h1>
+<%end%>
