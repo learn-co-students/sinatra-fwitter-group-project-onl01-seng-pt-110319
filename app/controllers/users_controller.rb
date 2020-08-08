@@ -29,6 +29,7 @@ class UsersController < ApplicationController
         redirect to '/login'
       else
         redirect to '/'
+        
       end
     end
 
@@ -46,7 +47,7 @@ class UsersController < ApplicationController
         else
           @tweeter  = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
           @tweeter .save
-          session[:user_id] = @tweeter .id
+          session[:user_id] = @tweeter.id
           redirect to '/tweets'
         end
       end
